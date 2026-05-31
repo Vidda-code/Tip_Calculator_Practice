@@ -1,5 +1,10 @@
 package com.example.tipcalculatorpractice
 
+import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+
 data class TipState(
     val billAmount: Int = 0,
     val tipPercent: Int = 0,
@@ -41,4 +46,27 @@ data class TipState(
         } else {
             emptyList()
         }
+}
+
+class TipViewModel : ViewModel() {
+    private val _state = MutableStateFlow(TipState())
+    val state = _state.asStateFlow()
+
+    fun onBillAmountChange(newAmount: Int) {
+        _state.update { currentState ->
+            currentState.copy(billAmount = newAmount)
+        }
+    }
+
+    fun onTipPercentChange(newTipPercent: Int) {
+        _state.update { currentState ->
+            currentState.copy(tipPercent = newTipPercent)
+        }
+    }
+
+    fun onPeopleCountChange(newPeopleCount: Int) {
+        _state.update { currentState ->
+            currentState.copy(peopleCount = newPeopleCount)
+        }
+    }
 }
