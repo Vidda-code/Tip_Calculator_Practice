@@ -1,6 +1,7 @@
 package com.example.tipcalculatorpractice.ui.component
 
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,7 +31,13 @@ fun PeopleCount(peopleCount: Int, tipPerPerson: Int) {
             .padding(
                 horizontal = 6.dp,
                 vertical = 6.dp
-            ),
+            )
+            .border(
+                width = 1.dp,
+                shape = RoundedCornerShape(6.dp),
+                color = Color.LightGray
+            )
+            .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Card(
