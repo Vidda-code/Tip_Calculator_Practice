@@ -1,5 +1,6 @@
 package com.example.tipcalculatorpractice.ui.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tipcalculatorpractice.ui.component.HeaderBanner
+import com.example.tipcalculatorpractice.ui.component.TipOptionCard
 
 @Composable
 fun TipScreen(
@@ -98,6 +100,8 @@ fun TipScreen(
             )
         }
 
+        Spacer(modifier = Modifier.height(32.dp))
+
         Column {
             Text(
                 text = "Tip Percentage",
@@ -106,12 +110,37 @@ fun TipScreen(
                 fontWeight = FontWeight.Bold
             )
 
-            Row() {
+            Spacer(modifier = Modifier.height(8.dp))
 
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                TipOptionCard(
+                    title = 10,
+                    label = "Tight",
+                    isSelected = true,
+                    onClick = {},
+                    modifier = Modifier.weight(1f)
+                )
+                TipOptionCard(
+                    title = 15,
+                    label = "Fair",
+                    isSelected = true,
+                    onClick = {},
+                    modifier = Modifier.weight(1f)
+                )
+                TipOptionCard(
+                    title = 20,
+                    label = "Generous",
+                    isSelected = true,
+                    onClick = {},
+                    modifier = Modifier.weight(1f)
+                )
             }
         }
 
-
+        Spacer(modifier = Modifier.height(32.dp))
 
         Text(
             text = "Number Of People",
