@@ -1,6 +1,7 @@
 package com.example.tipcalculatorpractice.ui.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,7 +36,8 @@ fun TipScreen(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier.padding(horizontal = 8.dp)
+        modifier = Modifier
+            .padding(horizontal = 8.dp)
             .fillMaxHeight()
     ) {
         HeaderBanner(
@@ -51,47 +53,86 @@ fun TipScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         //Total Bill Amount
+        Column {
+            Text(
+                text = "Total Bill Amount",
+                color = Color.DarkGray,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            val displayValue = if (billAmount == 0) "" else billAmount.toString()
+            OutlinedTextField(
+                value = displayValue,
+                onValueChange = { newValue ->
+                    val cleanString = newValue.filter { it.isDigit() }
+                    val newAmount = cleanString.toIntOrNull() ?: 0
+                    onAmountChange(newAmount)
+                },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(8.dp),
+                textStyle = TextStyle(
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color(0xFF1B4E3B)
+                ),
+                leadingIcon = {
+                    Text(
+                        text = "₦",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF1B4E3B),
+                        modifier = Modifier.padding(start = 8.dp)
+                    )
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Number
+                ),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color(0xFF1B4E3B),
+                    unfocusedBorderColor = Color.LightGray,
+                ),
+                singleLine = true
+            )
+        }
+
+        Column {
+            Text(
+                text = "Tip Percentage",
+                color = Color.DarkGray,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
+            )
+
+            Row() {
+
+            }
+        }
+
+
+
         Text(
-            text = "Total Bill Amount",
+            text = "Number Of People",
             color = Color.DarkGray,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold
         )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        val displayValue = if (billAmount == 0) "" else billAmount.toString()
-        OutlinedTextField(
-            value = displayValue,
-            onValueChange = { newValue ->
-                val cleanString = newValue.filter { it.isDigit() }
-                val newAmount = cleanString.toIntOrNull() ?: 0
-                onAmountChange(newAmount)
-            },
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(8.dp),
-            textStyle = TextStyle(
-                fontSize = 36.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color(0xFF1B4E3B)
-            ),
-            leadingIcon = {
-                Text(
-                    text = "₦",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1B4E3B),
-                    modifier = Modifier.padding(start = 8.dp)
-                )
-            },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number
-            ),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = Color(0xFF1B4E3B),
-                unfocusedBorderColor = Color.LightGray,
-            ),
-            singleLine = true
-        )
     }
+}
+
+@Preview(showSystemUi = true)
+@Composable
+private fun TipScreenPreview() {
+    TipScreen(
+        bannerTitle = "Total Per Person",
+        totalAmount = 5000,
+        label = "Generous",
+        tipAmountTitle = "Tip Per Person",
+        tipAmount = 560,
+        billAmountTitle = "Bill Split",
+        billAmount = 1680,
+        onAmountChange = {}
+    )
 }
