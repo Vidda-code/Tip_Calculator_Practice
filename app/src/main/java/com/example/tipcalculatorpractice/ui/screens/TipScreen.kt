@@ -1,5 +1,6 @@
 package com.example.tipcalculatorpractice.ui.screens
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,12 +9,19 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Remove
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -39,7 +47,7 @@ fun TipScreen(
 ) {
     Column(
         modifier = Modifier
-            .padding(horizontal = 8.dp)
+            .padding(horizontal = 14.dp)
             .fillMaxHeight()
     ) {
         HeaderBanner(
@@ -148,6 +156,48 @@ fun TipScreen(
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold
         )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(
+                    width = 1.dp,
+                    color = Color.LightGray,
+                    shape = RoundedCornerShape(8.dp)
+                )
+                .padding(horizontal = 8.dp, vertical = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Minus Button
+            IconButton(onClick = { /* TODO: Decrement logic */ }) {
+                Icon(
+                    imageVector = Icons.Rounded.Remove,
+                    contentDescription = "Decrease people",
+                    tint = Color(0xFF1B4E3B),
+                    modifier = Modifier.size(32.dp)
+                )
+            }
+
+            Text(
+                text = "1", // Make this dynamic later (e.g., numberOfPeople.toString())
+                fontSize = 36.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.Black
+            )
+
+            // Plus Button
+            IconButton(onClick = { /* TODO: Increment logic */ }) {
+                Icon(
+                    imageVector = Icons.Rounded.Add,
+                    contentDescription = "Increase people",
+                    tint = Color(0xFF1B4E3B),
+                    modifier = Modifier.size(32.dp)
+                )
+            }
+        }
     }
 }
 
