@@ -43,6 +43,9 @@ fun TipScreen(
     billAmountTitle: String,
     billAmount: Int,
     onAmountChange: (Int) -> Unit,
+    onPeopleCountChange: (Int) -> Unit,
+    onTipPercentChange: (Int) -> Unit,
+    peopleCount: Int,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -172,7 +175,11 @@ fun TipScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Minus Button
-            IconButton(onClick = { /* TODO: Decrement logic */ }) {
+            IconButton(onClick = {
+                if (peopleCount > 1) {
+                    onPeopleCountChange(peopleCount - 1)
+                }
+            }) {
                 Icon(
                     imageVector = Icons.Rounded.Remove,
                     contentDescription = "Decrease people",
@@ -182,14 +189,16 @@ fun TipScreen(
             }
 
             Text(
-                text = "1", // Make this dynamic later (e.g., numberOfPeople.toString())
+                text = peopleCount.toString(),
                 fontSize = 36.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color.Black
             )
 
             // Plus Button
-            IconButton(onClick = { /* TODO: Increment logic */ }) {
+            IconButton(onClick = {
+                onPeopleCountChange(peopleCount + 1)
+            }) {
                 Icon(
                     imageVector = Icons.Rounded.Add,
                     contentDescription = "Increase people",
@@ -212,6 +221,9 @@ private fun TipScreenPreview() {
         tipAmount = 560,
         billAmountTitle = "Bill Split",
         billAmount = 1680,
-        onAmountChange = {}
+        onAmountChange = {},
+        onTipPercentChange = {},
+        onPeopleCountChange = {},
+        peopleCount = 0
     )
 }
