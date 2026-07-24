@@ -45,12 +45,13 @@ fun TipScreen(
     onAmountChange: (Int) -> Unit,
     onPeopleCountChange: (Int) -> Unit,
     onTipPercentChange: (Int) -> Unit,
+    tipPercent: Int,
     peopleCount: Int,
     modifier: Modifier = Modifier
 ) {
     Column(
         modifier = Modifier
-            .padding(horizontal = 14.dp)
+            .padding(horizontal = 14.dp, vertical = 28.dp)
             .fillMaxHeight()
     ) {
         HeaderBanner(
@@ -130,22 +131,28 @@ fun TipScreen(
                 TipOptionCard(
                     title = 10,
                     label = "Tight",
-                    isSelected = true,
-                    onClick = {},
+                    isSelected = tipPercent == 10,
+                    onClick = {
+                        onTipPercentChange(10)
+                    },
                     modifier = Modifier.weight(1f)
                 )
                 TipOptionCard(
                     title = 15,
                     label = "Fair",
-                    isSelected = true,
-                    onClick = {},
+                    isSelected = tipPercent == 15,
+                    onClick = {
+                        onTipPercentChange(15)
+                    },
                     modifier = Modifier.weight(1f)
                 )
                 TipOptionCard(
                     title = 20,
                     label = "Generous",
-                    isSelected = true,
-                    onClick = {},
+                    isSelected = tipPercent == 20,
+                    onClick = {
+                        onTipPercentChange(20)
+                    },
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -224,6 +231,7 @@ private fun TipScreenPreview() {
         onAmountChange = {},
         onTipPercentChange = {},
         onPeopleCountChange = {},
-        peopleCount = 0
+        peopleCount = 0,
+        tipPercent = 15
     )
 }

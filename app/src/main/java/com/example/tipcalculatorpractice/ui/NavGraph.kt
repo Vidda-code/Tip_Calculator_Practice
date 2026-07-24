@@ -44,7 +44,10 @@ fun NavGraphHost(
                 onPeopleCountChange = { newCount ->
                     viewModel.onPeopleCountChange(newCount)
                 },
-                onTipPercentChange = {}
+                tipPercent = state.tipPercent,
+                onTipPercentChange = { newPercent ->
+                    viewModel.onTipPercentChange(newPercent)
+                }
             )
         }
     }
