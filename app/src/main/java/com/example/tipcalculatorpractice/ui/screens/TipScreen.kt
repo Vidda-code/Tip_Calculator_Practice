@@ -36,10 +36,10 @@ import com.example.tipcalculatorpractice.ui.component.TipOptionCard
 @Composable
 fun TipScreen(
     bannerTitle: String,
-    totalAmount: Int,
+    totalAmount: Double,
     label: String,
     tipAmountTitle: String,
-    tipAmount: Int,
+    tipAmount: Double,
     billAmountTitle: String,
     billAmount: Int,
     onAmountChange: (Int) -> Unit,
@@ -47,10 +47,10 @@ fun TipScreen(
     onTipPercentChange: (Int) -> Unit,
     tipPercent: Int,
     peopleCount: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(horizontal = 14.dp, vertical = 28.dp)
             .fillMaxHeight()
     ) {
@@ -222,10 +222,10 @@ fun TipScreen(
 private fun TipScreenPreview() {
     TipScreen(
         bannerTitle = "Total Per Person",
-        totalAmount = 5000,
+        totalAmount = 5000.0,
         label = "Generous",
         tipAmountTitle = "Tip Per Person",
-        tipAmount = 560,
+        tipAmount = 560.0,
         billAmountTitle = "Bill Split",
         billAmount = 1680,
         onAmountChange = {},

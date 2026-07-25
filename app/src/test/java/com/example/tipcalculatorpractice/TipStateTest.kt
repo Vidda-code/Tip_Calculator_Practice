@@ -11,7 +11,7 @@ class TipStateTest {
         val state = TipState(billAmount = 1000, tipPercent = 20, peopleCount = 2)
 
         // Act & Assert: Tip per person should be 100
-        assertEquals(100, state.tipPerPerson)
+        assertEquals(100.0, state.tipPerPerson, 0.001)
     }
 
     @Test
@@ -20,7 +20,7 @@ class TipStateTest {
         val state = TipState(billAmount = 1000, tipPercent = 20, peopleCount = 2)
 
         // Act & Assert: 500 (bill split) + 100 (tip split) = 600
-        assertEquals(600, state.totalPerPerson)
+        assertEquals(600.0, state.totalPerPerson, 0.001)
     }
 
     @Test
@@ -29,8 +29,8 @@ class TipStateTest {
         val state = TipState(billAmount = 1000, tipPercent = 15, peopleCount = 0)
 
         // Assert
-        assertEquals(0, state.tipPerPerson)
-        assertEquals(0, state.totalPerPerson)
+        assertEquals(0.0, state.tipPerPerson, 0.001)
+        assertEquals(0.0, state.totalPerPerson, 0.001)
         assertEquals(emptyList<String>(), state.breakdown)
     }
 

@@ -19,22 +19,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun PeopleCount(peopleCount: Int, tipPerPerson: Int) {
+fun PeopleCount(
+    personIndex: Int,
+    amount: Double,
+    modifier: Modifier = Modifier,
+) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(
-                horizontal = 6.dp,
-                vertical = 6.dp
-            )
+            .padding(vertical = 4.dp)
             .border(
                 width = 1.dp,
-                shape = RoundedCornerShape(6.dp),
+                shape = RoundedCornerShape(8.dp),
                 color = Color.LightGray
             )
             .padding(12.dp),
@@ -59,18 +60,22 @@ fun PeopleCount(peopleCount: Int, tipPerPerson: Int) {
             modifier = Modifier.weight(1f)
         ) {
             Text(
-                text = "Person $peopleCount",
-                fontSize = 18.sp
+                text = "Person $personIndex",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
             )
             Text(
                 text = "Equal Share",
-                fontSize = 12.sp
+                fontSize = 12.sp,
+                color = Color.Gray
             )
         }
 
         Text(
-            text = "₦$tipPerPerson",
-            fontSize = 18.sp
+            text = "₦%.2f".format(amount),
+            fontSize = 18.sp,
+            fontWeight = FontWeight.ExtraBold,
+            color = Color(0xFF1B4E3B)
         )
     }
 }

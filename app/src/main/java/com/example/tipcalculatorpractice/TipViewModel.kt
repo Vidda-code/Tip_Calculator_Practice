@@ -8,25 +8,25 @@ import kotlinx.coroutines.flow.update
 data class TipState(
     val billAmount: Int = 0,
     val tipPercent: Int = 0,
-    val peopleCount: Int = 0
+    val peopleCount: Int = 0,
 ) {
-    val tipPerPerson: Int
+    val tipPerPerson: Double
         get() = if (peopleCount > 0) {
-            (billAmount * tipPercent / 100) / peopleCount
+            (billAmount.toDouble() * tipPercent / 100.0) / peopleCount
         } else {
-            0
+            0.0
         }
 
-    val totalPerPerson: Int
+    val totalPerPerson: Double
         get() = if (peopleCount > 0) {
-            (billAmount / peopleCount) + tipPerPerson
+            (billAmount.toDouble() / peopleCount) + tipPerPerson
         } else {
-            0
+            0.0
         }
 
     val label: String
         get() = when {
-            tipPercent >= 25 -> "Generous"
+            tipPercent >= 20 -> "Generous"
             tipPercent >= 15 -> "Great"
             tipPercent >= 10 -> "Standard"
             else -> "Give Tip"
