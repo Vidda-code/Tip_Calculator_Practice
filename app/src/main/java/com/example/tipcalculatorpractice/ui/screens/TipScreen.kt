@@ -51,7 +51,7 @@ fun TipScreen(
 ) {
     Column(
         modifier = modifier
-            .padding(horizontal = 14.dp, vertical = 28.dp)
+            .padding(horizontal = 14.dp)
             .fillMaxHeight()
     ) {
         HeaderBanner(
