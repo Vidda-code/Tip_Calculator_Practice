@@ -9,10 +9,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.tipcalculatorpractice.TipViewModel
+import com.example.tipcalculatorpractice.ui.screens.BreakdownScreen
 import com.example.tipcalculatorpractice.ui.screens.TipScreen
 
 sealed class Screen(val route: String) {
     data object TipScreen : Screen("tipScreen")
+    data object BreakdownScreen : Screen("breakdownScreen")
 }
 
 @Composable
@@ -48,6 +50,20 @@ fun NavGraphHost(
                 onTipPercentChange = { newPercent ->
                     viewModel.onTipPercentChange(newPercent)
                 }
+            )
+        }
+        // Breakdown Screen
+        composable(route = Screen.BreakdownScreen.route){
+            BreakdownScreen(
+                bannerTitle = "TOTAL BILL + TIP",
+                totalAmount = state.totalPerPerson,
+                label = state.label,
+                tipAmountTitle = "Base Bill",
+                tipAmount = state.tipPerPerson,
+                billAmountTitle = "Tip(${state.tipPerPerson})",
+                billAmount = state.billAmount,
+                peopleCount = state.peopleCount,
+                tipPercent = state.tipPercent
             )
         }
     }
