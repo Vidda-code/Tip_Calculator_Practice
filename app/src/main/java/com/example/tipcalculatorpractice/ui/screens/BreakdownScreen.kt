@@ -39,7 +39,7 @@ fun BreakdownScreen(
     val percentageTest = tipPercent
     Column(
         modifier = modifier
-            .padding(horizontal = 14.dp)
+            .padding(horizontal = 14.dp, vertical = 16.dp)
             .fillMaxHeight()
     ) {
         HeaderBanner(

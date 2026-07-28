@@ -19,13 +19,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TipCalculatorPracticeTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                ) { innerPadding ->
-                    NavGraphHost(
-                        modifier = Modifier.padding(innerPadding),
-                    )
-                }
+                NavGraphHost()
             }
         }
     }

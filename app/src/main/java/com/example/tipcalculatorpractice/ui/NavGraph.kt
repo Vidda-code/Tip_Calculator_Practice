@@ -4,17 +4,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.FilterList
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,6 +35,7 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector)
     data object BreakdownScreen : Screen("breakdownScreen", "Breakdown", Icons.Default.FilterList)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavGraphHost(
     modifier: Modifier = Modifier,
@@ -43,6 +50,29 @@ fun NavGraphHost(
     val screens = listOf(Screen.TipScreen, Screen.BreakdownScreen)
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        "Tip Splitter",
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                },
+                navigationIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Calculate,
+                        contentDescription = "Calculator",
+                        tint = Color.White,
+                        modifier = Modifier.padding(start = 12.dp)
+                    )
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color(0xFF1B4E3B)
+                )
+            )
+        },
+
         bottomBar = {
             NavigationBar(
                 containerColor = Color.White
