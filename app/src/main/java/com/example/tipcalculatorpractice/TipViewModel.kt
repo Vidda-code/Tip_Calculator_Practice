@@ -24,6 +24,9 @@ data class TipState(
             0.0
         }
 
+    val totalAmount: Double
+        get() = billAmount + (billAmount * tipPercent / 100.0)
+
     val label: String
         get() = when {
             tipPercent >= 20 -> "Generous"

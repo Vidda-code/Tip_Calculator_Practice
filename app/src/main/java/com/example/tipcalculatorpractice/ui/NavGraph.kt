@@ -122,10 +122,10 @@ fun NavGraphHost(
             composable(route = Screen.BreakdownScreen.route) {
                 BreakdownScreen(
                     bannerTitle = "TOTAL BILL + TIP",
-                    totalAmount = state.totalPerPerson,
+                    totalAmount = state.totalAmount, //COME BACK FOR THIS
                     label = state.label,
                     tipAmountTitle = "Base Bill",
-                    tipAmount = state.tipPerPerson,
+                    tipAmount = state.billAmount.toDouble(),
                     billAmountTitle = "Tip(${state.tipPerPerson})",
                     billAmount = state.billAmount,
                     peopleCount = state.peopleCount,

@@ -32,11 +32,12 @@ fun BreakdownScreen(
 //    onAmountChange: (Int) -> Unit,
 //    onPeopleCountChange: (Int) -> Unit,
 //    onTipPercentChange: (Int) -> Unit,
+    totalPerPerson: Double,
     tipPercent: Int,
     peopleCount: Int,
     modifier: Modifier = Modifier
 ) {
-    val percentageTest = tipPercent
+    val totalPerPerson = tipPercent
     Column(
         modifier = modifier
             .padding(horizontal = 14.dp, vertical = 16.dp)
@@ -67,7 +68,7 @@ fun BreakdownScreen(
             )
 
             Text(
-                text = "₦ $tipAmount Each",
+                text = "₦%.2f each".format(totalPerPerson),
                 color = Color.DarkGray,
                 fontSize = 16.sp,
             )
@@ -100,6 +101,7 @@ private fun BreakdownScreenPreview() {
 //        onTipPercentChange = {},
 //        onPeopleCountChange = {},
         peopleCount = 7,
-        tipPercent = 15
+        tipPercent = 15,
+        totalPerPerson = 750.0
     )
 }
