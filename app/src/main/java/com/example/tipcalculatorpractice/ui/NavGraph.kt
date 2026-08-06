@@ -129,7 +129,8 @@ fun NavGraphHost(
                     billAmountTitle = "Tip(${state.tipPerPerson})",
                     billAmount = state.billAmount,
                     peopleCount = state.peopleCount,
-                    tipPercent = state.tipPercent
+                    tipPercent = state.tipPercent,
+                    totalPerPerson = state.totalPerPerson
                 )
             }
         }

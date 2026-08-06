@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.update
 
 data class TipState(
     val billAmount: Int = 0,
-    val tipPercent: Int = 0,
-    val peopleCount: Int = 0,
+    val tipPercent: Int = 15, // Default tip percentage should be fair at 15%
+    val peopleCount: Int = 1, // People count should start from 1 and not zero
 ) {
     val tipPerPerson: Double
         get() = if (peopleCount > 0) {
