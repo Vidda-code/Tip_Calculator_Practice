@@ -72,7 +72,7 @@ fun PeopleCount(
         }
 
         Text(
-            text = "₦%.2f".format(amount),
+            text = "₦%,.2f".format(amount),
             fontSize = 18.sp,
             fontWeight = FontWeight.ExtraBold,
             color = Color(0xFF1B4E3B)

@@ -77,7 +77,7 @@ fun HeaderBanner(
 
             // Total Amount( Main Amount seen on the Header Banner)
             Text(
-                text = "₦%.2f".format(totalAmount),
+                text = "₦%,.2f".format(totalAmount),
                 fontSize = 36.sp, // Made much larger
                 fontWeight = FontWeight.ExtraBold, // Made very thick
                 color = Color(0xFF1B4E3B) // Matched the dark forest green
@@ -106,7 +106,7 @@ fun HeaderBanner(
                     Spacer(modifier = Modifier.height(4.dp))
 
                     Text(
-                        text = "₦%.2f".format(tipAmount),
+                        text = "₦%,.2f".format(tipAmount),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
@@ -124,7 +124,7 @@ fun HeaderBanner(
                     Spacer(modifier = Modifier.height(4.dp))
 
                     Text(
-                        text = "₦$billAmount",
+                        text = "₦%,2d".format(billAmount),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
