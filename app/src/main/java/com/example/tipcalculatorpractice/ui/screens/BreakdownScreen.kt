@@ -68,7 +68,7 @@ fun BreakdownScreen(
             )
 
             Text(
-                text = "₦%.2f each".format(totalPerPerson.toFloat()),
+                text = "₦%.2f each".format(tipAmount.toFloat()),
                 color = Color.DarkGray,
                 fontSize = 16.sp,
             )
