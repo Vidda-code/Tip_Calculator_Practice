@@ -130,7 +130,7 @@ fun TipScreen(
             ) {
                 TipOptionCard(
                     title = 10,
-                    label = "Tight",
+                    label = "Standard",
                     isSelected = tipPercent == 10,
                     onClick = {
                         onTipPercentChange(10)
@@ -139,7 +139,7 @@ fun TipScreen(
                 )
                 TipOptionCard(
                     title = 15,
-                    label = "Fair",
+                    label = "Great",
                     isSelected = tipPercent == 15,
                     onClick = {
                         onTipPercentChange(15)
