@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -71,11 +72,14 @@ fun BreakdownScreen(
 
         if (peopleCount > 0) {
             Spacer(modifier = Modifier.height(8.dp))
-            repeat(peopleCount) { index ->
-                PeopleCount(
-                    personIndex = index + 1,
-                    amount = totalPerPerson
-                )
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+            ) {
+                items(peopleCount) { index ->
+                    PeopleCount(personIndex = index + 1, amount = totalPerPerson)
+                }
             }
         }
     }
