@@ -37,7 +37,6 @@ fun BreakdownScreen(
     peopleCount: Int,
     modifier: Modifier = Modifier
 ) {
-    val totalPerPerson = tipPercent
     Column(
         modifier = modifier
             .padding(horizontal = 14.dp, vertical = 16.dp)
@@ -68,7 +67,7 @@ fun BreakdownScreen(
             )
 
             Text(
-                text = "₦%.2f each".format(tipAmount.toFloat()),
+                text = "₦%.2f each".format(totalPerPerson),
                 color = Color.DarkGray,
                 fontSize = 16.sp,
             )
@@ -79,7 +78,7 @@ fun BreakdownScreen(
             repeat(peopleCount) { index ->
                 PeopleCount(
                     personIndex = index + 1,
-                    amount = tipAmount
+                    amount = totalPerPerson
                 )
             }
         }
