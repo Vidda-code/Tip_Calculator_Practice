@@ -29,11 +29,7 @@ fun BreakdownScreen(
     tipAmount: Double,
     billAmountTitle: String,
     billAmount: Int,
-//    onAmountChange: (Int) -> Unit,
-//    onPeopleCountChange: (Int) -> Unit,
-//    onTipPercentChange: (Int) -> Unit,
     totalPerPerson: Double,
-    tipPercent: Int,
     peopleCount: Int,
     modifier: Modifier = Modifier
 ) {
@@ -96,11 +92,7 @@ private fun BreakdownScreenPreview() {
         tipAmount = 560.0,
         billAmountTitle = "Tip()",
         billAmount = 1680,
-//        onAmountChange = {},
-//        onTipPercentChange = {},
-//        onPeopleCountChange = {},
         peopleCount = 7,
-        tipPercent = 15,
         totalPerPerson = 750.0
     )
 }
