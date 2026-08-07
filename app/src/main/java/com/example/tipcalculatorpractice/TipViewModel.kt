@@ -24,8 +24,11 @@ data class TipState(
             0.0
         }
 
+    val totalTipAmount: Double
+        get() = billAmount * tipPercent / 100.0
+
     val totalAmount: Double
-        get() = billAmount + (billAmount * tipPercent / 100.0)
+        get() = billAmount + totalTipAmount
 
     val label: String
         get() = when {
