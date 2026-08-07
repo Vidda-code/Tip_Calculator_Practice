@@ -40,12 +40,7 @@ data class TipState(
 
     val breakdown: List<String>
         get() = if (peopleCount > 0) {
-            // Force decimal math so we don't lose the kobo/cents
-            val exactTotalTip = billAmount * (tipPercent / 100.0)
-            val exactGrandTotal = billAmount + exactTotalTip
-            val exactPerPerson = exactGrandTotal / peopleCount
-
-            // Map creates a clean list of rows for the UI
+            val exactPerPerson = totalAmount / peopleCount
             (1..peopleCount).map { personNumber ->
                 "Person $personNumber — ₦%.2f".format(exactPerPerson)
             }
