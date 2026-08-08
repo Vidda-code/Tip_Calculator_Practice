@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Remove
@@ -49,10 +51,13 @@ fun TipScreen(
     peopleCount: Int,
     modifier: Modifier = Modifier,
 ) {
+    val scrollState = rememberScrollState()
     Column(
         modifier = modifier
             .padding(horizontal = 14.dp, vertical = 16.dp)
             .fillMaxHeight()
+            .verticalScroll(scrollState),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         HeaderBanner(
             title = bannerTitle,
@@ -63,8 +68,6 @@ fun TipScreen(
             tipAmountTitle = tipAmountTitle,
             tipAmount = tipAmount
         )
-
-        Spacer(modifier = Modifier.height(32.dp))
 
         //Total Bill Amount
         Column {
@@ -112,8 +115,7 @@ fun TipScreen(
             )
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
-
+        // Tip Percentage Section
         Column {
             Text(
                 text = "Tip Percentage",
@@ -158,60 +160,61 @@ fun TipScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
-
-        Text(
-            text = "Number Of People",
-            color = Color.DarkGray,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .border(
-                    width = 1.dp,
-                    color = Color.LightGray,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .padding(horizontal = 8.dp, vertical = 12.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Minus Button
-            IconButton(onClick = {
-                if (peopleCount > 1) {
-                    onPeopleCountChange(peopleCount - 1)
-                }
-            }) {
-                Icon(
-                    imageVector = Icons.Rounded.Remove,
-                    contentDescription = "Decrease people",
-                    tint = Color(0xFF1B4E3B),
-                    modifier = Modifier.size(32.dp)
-                )
-            }
-
+        //Number of people scale
+        Column {
             Text(
-                text = peopleCount.toString(),
-                fontSize = 36.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color.Black
+                text = "Number Of People",
+                color = Color.DarkGray,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
             )
 
-            // Plus Button
-            IconButton(onClick = {
-                onPeopleCountChange(peopleCount + 1)
-            }) {
-                Icon(
-                    imageVector = Icons.Rounded.Add,
-                    contentDescription = "Increase people",
-                    tint = Color(0xFF1B4E3B),
-                    modifier = Modifier.size(32.dp)
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(
+                        width = 1.dp,
+                        color = Color.LightGray,
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .padding(horizontal = 8.dp, vertical = 12.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Minus Button
+                IconButton(onClick = {
+                    if (peopleCount > 1) {
+                        onPeopleCountChange(peopleCount - 1)
+                    }
+                }) {
+                    Icon(
+                        imageVector = Icons.Rounded.Remove,
+                        contentDescription = "Decrease people",
+                        tint = Color(0xFF1B4E3B),
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+
+                Text(
+                    text = peopleCount.toString(),
+                    fontSize = 36.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.Black
                 )
+
+                // Plus Button
+                IconButton(onClick = {
+                    onPeopleCountChange(peopleCount + 1)
+                }) {
+                    Icon(
+                        imageVector = Icons.Rounded.Add,
+                        contentDescription = "Increase people",
+                        tint = Color(0xFF1B4E3B),
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
             }
         }
     }
